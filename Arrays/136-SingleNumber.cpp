@@ -4,16 +4,10 @@ using namespace std;
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        unordered_map<int, int> hash;
-        
+        int result = 0;
         for(int i = 0; i < nums.size(); i++){
-            hash[nums[i]]++;
+            result ^= nums[i];
         }
-        
-        for(auto it : hash){
-            if(it.second == 1) return it.first;
-        }
-        
-        return -1;
+        return result;
     }
 };
