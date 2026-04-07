@@ -1,18 +1,25 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-int longestSubarray(vector <int> &nums, int k){
-    int n=nums.size();
-    int maxLength=0;
-
-    for(int i=0;i<n;i++){
-        for(int j=i;j<n;j++) {
-            int sum = 0;
-            for(int p=i;p<=j;p++){
-                sum+=nums[p];
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int n = nums.size();
+        int left = 0;
+        int right = 0;
+        long int sum = 0;
+        int maxLength = 0;
+        while (right < n) {
+            sum += nums[right];
+            while (left <= right && sum > k) {
+                sum -= nums[left];
+                left++;
             }
-            if (sum==k) maxLength=max(maxLength,j-i+1);
+            if (sum == k) {
+                maxLength = max(maxLength, right - left + 1);
+            }
+            right++;
         }
+        return maxLength;
     }
-    return maxLength;
-}
+};
