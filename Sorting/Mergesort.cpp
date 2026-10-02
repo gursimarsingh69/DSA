@@ -5,8 +5,8 @@ void merge(vector<int>& arr,int low, int mid,int high){
     int n1 = mid - low + 1;
     int n2 = high - mid;
     vector<int> L(n1), R(n2);
-    for(auto i : L) L[i] = arr[low+i];
-    for(auto j : R) R[j] = arr[mid+1+j];
+    for (int i = 0; i < n1; ++i) L[i] = arr[low + i];
+    for (int j = 0; j < n2; ++j) R[j] = arr[mid + 1 + j];
 
     int i=0,j=0,k=low;
 
